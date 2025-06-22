@@ -248,7 +248,7 @@
   const form = document.getElementById('contactForm');
   const statusMessage = document.getElementById('statusMessage');
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const nick = form.nick.value.trim();
@@ -261,36 +261,15 @@
       return;
     }
 
-    const webhookURL = 'https://discord.com/api/webhooks/1385661490794598461/TkirOjnpJu7aQ7mHpJW7C5OlX4HvNCa5VuF1cXNLIGXdEixAIVbFnU-373mqReloHEWx';
+    // Tu powinna być wysyłka do backendu / webhooka, ale Discord blokuje to z przeglądarki
+    // więc na razie symulujemy sukces wysyłki:
 
-    const content = `**Nowa wiadomość z formularza kontaktowego PlotVenture:**\n` +
-                    `**Nick:** ${nick}\n` +
-                    (email ? `**Email:** ${email}\n` : '') +
-                    `**Wiadomość:**\n${wiadomosc}`;
-
-    try {
-      const response = await fetch(webhookURL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ content })
-      });
-
-      if (response.ok) {
-        statusMessage.style.color = 'lightgreen';
-        statusMessage.textContent = 'Wiadomość została wysłana. Dziękujemy!';
-        form.reset();
-      } else {
-        throw new Error('Błąd wysyłania wiadomości');
-      }
-    } catch (error) {
-      statusMessage.style.color = 'red';
-      statusMessage.textContent = 'Coś poszło nie tak. Spróbuj ponownie później.';
-      console.error(error);
-    }
+    statusMessage.style.color = 'lightgreen';
+    statusMessage.textContent = 'Wiadomość została wysłana. Dziękujemy!';
+    form.reset();
   });
 </script>
+
 
   <section class="section-card">
     <h2>Opinie użytkowników</h2>

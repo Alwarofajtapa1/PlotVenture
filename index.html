@@ -212,7 +212,7 @@
       </div>
       <div class="member">
         <img src="https://imgur.com/Y7AGGmr.png" alt="Admin">
-        <h3>Nick<br><small>🛡️ Admin</small></h3>
+        <h3>Boszkii<br><small>🛡️ Admin</small></h3>
       </div>
       <div class="member">
         <img src="https://imgur.com/QNwu0Xa.png" alt="Moderator">
@@ -275,12 +275,14 @@
   <h2>Opinie użytkowników</h2>
   <div id="opinie-lista">
     <div class="opinie-box">
-      “Świetna społeczność, dobra zabawa i profesjonalne podejście!” – użytkownik123
+      “Świetna społeczność, dobra zabawa i profesjonalne podejście!” – <strong>użytkownik123</strong> <br/>
+      <small style="color: var(--accent);">2025-06-22 12:00</small>
     </div>
   </div>
 
   <div style="margin-top: 1rem;">
     <h3>Dodaj swoją opinię</h3>
+    <input id="nowy-nick" type="text" placeholder="Twój nick" style="width: 100%; border-radius: 10px; padding: 0.5rem; margin-bottom: 0.5rem;">
     <textarea id="nowa-opinia" rows="3" placeholder="Napisz tutaj swoją opinię..." style="width: 100%; border-radius: 10px; padding: 0.5rem;"></textarea>
     <button id="dodaj-opinie" style="margin-top: 0.5rem; background: var(--accent); color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 10px; cursor: pointer;">Dodaj opinię</button>
   </div>
@@ -290,32 +292,40 @@
   const dodajBtn = document.getElementById('dodaj-opinie');
   const opinieLista = document.getElementById('opinie-lista');
   const nowaOpiniaInput = document.getElementById('nowa-opinia');
+  const nowyNickInput = document.getElementById('nowy-nick');
 
   dodajBtn.addEventListener('click', () => {
     const tekst = nowaOpiniaInput.value.trim();
+    const nick = nowyNickInput.value.trim();
+
+    if (nick.length < 3) {
+      alert('Podaj swój nick (min. 3 znaki).');
+      return;
+    }
+
     if (tekst.length < 5) {
       alert('Opinia musi mieć co najmniej 5 znaków.');
       return;
     }
 
+    // Pobierz aktualną datę i godzinę w formacie YYYY-MM-DD HH:MM
+    const now = new Date();
+    const dataStr = now.getFullYear() + '-' +
+                    String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                    String(now.getDate()).padStart(2, '0') + ' ' +
+                    String(now.getHours()).padStart(2, '0') + ':' +
+                    String(now.getMinutes()).padStart(2, '0');
+
     // Tworzymy nowy element opinii
     const opiniaDiv = document.createElement('div');
     opiniaDiv.className = 'opinie-box';
-    opiniaDiv.textContent = tekst;
+    opiniaDiv.innerHTML = `“${tekst}” – <strong>${nick}</strong> <br/><small style="color: var(--accent);">${dataStr}</small>`;
 
     // Dodajemy nową opinię na górę listy
     opinieLista.insertBefore(opiniaDiv, opinieLista.firstChild);
 
-    // Czyścimy pole
+    // Czyścimy pola
     nowaOpiniaInput.value = '';
+    nowyNickInput.value = '';
   });
 </script>
-Gdzie to wstawić?
-Podmień cały obecny blok opinii w twoim kodzie tym powyższym (czyli ten fragment, który zaczyna się od <section class="section-card"> z opiniami).
-
-Efekt:
-Pokazuje domyślną opinię
-
-Możesz wpisać nową, kliknąć "Dodaj opinię"
-
-Nowa opinia pojawi się na górze listy od razu

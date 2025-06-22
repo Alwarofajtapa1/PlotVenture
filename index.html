@@ -2,231 +2,483 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Społeczność</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Społeczność Avi - Discord & Minecraft</title>
+  <meta name="description" content="Oficjalna społeczność Avi - serwer Discord i Minecraft. Dołącz do nas i rozwijaj swoje umiejętności!">
+  <meta name="keywords" content="Avi, Discord, Minecraft, społeczność, gaming, team, kontakt, opinie, FAQ, aktualności">
+  <link rel="icon" href="https://imgur.com/0ET8WlH.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --main-color: #7f5af0;
-      --light-bg: #ffffff;
-      --dark-bg: #0f0f1a;
-      --text-light: #f0f0f0;
-      --text-dark: #121212;
-    }
-
+    /* Reset & base */
+    *, *::before, *::after { box-sizing: border-box; }
     body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: var(--light-bg);
-      color: var(--text-dark);
-      transition: background-color 0.3s, color 0.3s;
+      margin: 0; font-family: 'Inter', sans-serif;
+      background: #0f0f1a; color: #e0dffd;
+      transition: background 0.3s, color 0.3s;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a {
+      color: #c4b5fd;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    a:hover, a:focus {
+      color: #a78bfa;
+      outline: none;
+    }
+    h1, h2, h3 {
+      margin-top: 0; color: #d8caff;
+    }
+    h2 {
+      border-bottom: 2px solid #7f5af0;
+      padding-bottom: 0.3em;
+      margin-bottom: 1em;
     }
 
-    body.dark-mode {
-      background-color: var(--dark-bg);
-      color: var(--text-light);
-    }
-
+    /* Header */
     header {
-      background-color: var(--main-color);
+      background: #7f5af0;
       color: white;
       padding: 1rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(127, 90, 240, 0.5);
     }
-
-    header img {
-      height: 50px;
+    header .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
-
+    header .logo img {
+      height: 40px;
+      width: 40px;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+    nav {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
     nav a {
-      margin: 0 1rem;
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
+      padding: 0.4em 0.6em;
+      border-radius: 6px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      user-select: none;
+    }
+    nav a:hover {
+      background: #a78bfa;
+      color: #1a1a2e;
+    }
+    .switches {
+      display: flex;
+      gap: 1rem;
+      cursor: pointer;
+      font-size: 1.4rem;
+      user-select: none;
+      padding: 0.2em 0.4em;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .switches:hover {
+      background: #a78bfa;
+      color: #1a1a2e;
     }
 
-    .section {
-      padding: 4rem 2rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h2 {
-      color: var(--main-color);
-    }
-
-    footer {
-      background-color: #1a1a2e;
-      color: white;
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    .socials a {
-      margin: 0 10px;
-      color: var(--main-color);
-      font-size: 1.5rem;
-    }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-group input, .form-group textarea {
+    /* Main container */
+    main {
+      flex-grow: 1;
+      max-width: 1100px;
+      margin: 2rem auto 3rem;
+      padding: 0 1rem;
       width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
     }
 
-    .btn {
-      background-color: var(--main-color);
-      color: white;
-      border: none;
-      padding: 0.7rem 1.5rem;
-      border-radius: 8px;
-      cursor: pointer;
+    /* Sections */
+    section {
+      margin-bottom: 4rem;
+    }
+    section p {
+      font-size: 1rem;
+      max-width: 720px;
     }
 
-    #scrollTop {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background-color: var(--main-color);
-      color: white;
-      border: none;
+    /* Team grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+      gap: 1.8rem;
+    }
+    .member {
+      background: #1f1f2e;
+      border-radius: 1rem;
+      padding: 1.2rem;
+      box-shadow: 0 0 20px #7f5af040;
+      text-align: center;
+      transition: box-shadow 0.3s;
+    }
+    .member:hover {
+      box-shadow: 0 0 30px #c4b5fdaa;
+    }
+    .member img {
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      font-size: 18px;
+      object-fit: cover;
+      margin-bottom: 0.6rem;
+      border: 3px solid #7f5af0;
+      background: #2e2e4f;
+    }
+    .member h3 {
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+      color: #d8caff;
+    }
+    .member p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #b3a4e8;
+    }
+
+    /* Form */
+    form {
+      max-width: 500px;
+      background: #1f1f2e;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #7f5af0aa;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 0.6rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 6px;
+      background: #2e2e4f;
+      color: #e0dffd;
+      font-size: 1rem;
+      resize: vertical;
+      transition: background 0.3s;
+    }
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    textarea:focus {
+      background: #4631d4;
+      outline: none;
+      box-shadow: 0 0 8px #a78bfa;
+    }
+    button {
+      background: #7f5af0;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.6rem;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 8px;
       cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover, button:focus {
+      background: #a78bfa;
+      outline: none;
+    }
+
+    /* FAQ */
+    .faq-item {
+      margin-bottom: 1rem;
+      background: #1f1f2e;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 0 10px #7f5af040;
+      user-select: none;
+      transition: background 0.3s;
+    }
+    .faq-item:hover {
+      background: #4631d4;
+    }
+    .faq-question {
+      font-weight: 700;
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-answer {
+      margin-top: 0.7rem;
       display: none;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+    .faq-item.open .faq-answer {
+      display: block;
     }
 
-    .lang-switch, .dark-switch {
-      cursor: pointer;
-      margin-left: 1rem;
+    /* Opinions */
+    .opinion {
+      background: #1f1f2e;
+      padding: 1rem 1.2rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      box-shadow: 0 0 15px #7f5af040;
+    }
+    .opinion p {
+      margin: 0;
+    }
+    .opinion .author {
+      margin-top: 0.7rem;
+      font-weight: 600;
+      color: #b3a4e8;
+      text-align: right;
     }
 
-    .section.hidden {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease;
+    /* Dark mode */
+    body.dark-mode {
+      background: #121214;
+      color: #ddd;
+    }
+    body.dark-mode header {
+      background: #5a3bdc;
+      box-shadow: 0 2px 10px #5a3bdc80;
+    }
+    body.dark-mode nav a:hover, body.dark-mode .switches:hover {
+      background: #9575f6;
+      color: #121214;
+    }
+    body.dark-mode .member {
+      background: #2a2a3a;
+      box-shadow: 0 0 20px #9575f6aa;
+    }
+    body.dark-mode form {
+      background: #2a2a3a;
+      box-shadow: 0 0 20px #9575f6aa;
+    }
+    body.dark-mode .faq-item {
+      background: #2a2a3a;
+    }
+    body.dark-mode .faq-item:hover {
+      background: #6a53f9;
+    }
+    body.dark-mode .opinion {
+      background: #2a2a3a;
+      box-shadow: 0 0 15px #9575f6aa;
     }
 
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    /* Footer */
+    footer {
+      background: #14142b;
+      color: #aaa;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      nav {
+        gap: 0.5rem;
+        font-size: 0.9rem;
+      }
+      .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
+      }
+      main {
+        margin: 1rem auto 2rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="https://imgur.com/0ET8WlH.png" alt="Logo">
-   <nav>
-  <a href="#onas">👥 O nas</a>
-  <a href="#projekty">🛠️ Projekty</a>
-  <a href="#umiejetnosci">🧠 Umiejętności</a>
-  <a href="#doswiadczenie">🗂️ Doświadczenie</a>
-  <a href="#blog">📰 Blog</a>
-  <a href="#opinie">💬 Opinie</a>
-  <a href="#faq">❓ FAQ</a>
-  <a href="#zespół"> 🧑‍💻 Zespół</a>
-  <a href="#kontakt">📬 Kontakt</a>
-  <span class="lang-switch" onclick="switchLang()">🌐</span>
-  <span class="dark-switch" onclick="toggleDarkMode()">🌓</span>
-</nav>
 
-  </header>
+<header>
+  <div class="logo" aria-label="Logo Społeczności Avi">
+    <img src="https://imgur.com/0ET8WlH.png" alt="Logo Avi" />
+    <strong>Avi Społeczność</strong>
+  </div>
+  <nav aria-label="Menu główne">
+    <a href="#onas">👥 O nas</a>
+    <a href="#regulamin">📜 Regulamin</a>
+    <a href="#kontakt">📬 Kontakt</a>
+    <a href="#opinie">💬 Opinie</a>
+    <a href="#zespol">🫂 Zespół</a>
+    <a href="#faq">❓ FAQ</a>
+    <a href="#aktualnosci">📰 Aktualności</a>
+    <a href="#partnerzy">🤝 Partnerzy</a>
+    <a href="#cytaty">💡 Cytaty</a>
+    <span class="switches" onclick="switchLang()" title="Zmień język">🌐</span>
+    <span class="switches" onclick="toggleDarkMode()" title="Tryb ciemny">🌓</span>
+  </nav>
+</header>
 
-  <main>
-    <section class="section" id="onas"><h2>O nas</h2><p>Nasza społeczność łączy ludzi z pasją.</p></section>
-    <section class="section" id="projekty"><h2>Projekty</h2><p>Wkrótce więcej...</p></section>
-    <section class="section" id="umiejetnosci"><h2>Umiejętności</h2><p>wkrótce</p></section>
-    <section class="section" id="doswiadczenie"><h2>Doświadczenie</h2><p>wkrótce.</p></section>
-    <section class="section" id="blog"><h2>Blog</h2><p>Aktualności i wiedza od nas.</p></section>
-    <section class="section" id="opinie"><h2>Opinie</h2><p>„wkrótce!”</p></section>
-    <section class="section" id="faq"><h2>FAQ</h2><p> wkrótce.</p></section>
-    <section class="section" id="zespół"><h2>Zespół</h2> Wkrótce> </p></section>
+<main>
 
-    <section class="section" id="kontakt">
-      <h2>Kontakt</h2>
-      <form id="contactForm">
-        <div class="form-group">
-          <input type="text" name="name" placeholder="Twoje imię" required>
-        </div>
-        <div class="form-group">
-          <input type="email" name="email" placeholder="Twój email" required>
-        </div>
-        <div class="form-group">
-          <textarea name="message" placeholder="Wiadomość" required></textarea>
-        </div>
-        <button type="submit" class="btn">Wyślij</button>
-      </form>
-    </section>
-  </main>
+  <section id="onas" tabindex="0">
+    <h2>👥 O nas</h2>
+    <p>Witamy w społeczności Avi — miejscu, gdzie fani Discorda i Minecrafta łączą się, aby rozwijać swoje pasje, współpracować i dzielić się wiedzą. Nasza platforma to przestrzeń przyjazna, nowoczesna i bezpieczna, stworzona z myślą o Tobie.</p>
+  </section>
 
-  <footer>
-    <p>© 2025 Społeczność. Wszelkie prawa zastrzeżone.</p>
-    <div class="socials">
-      <a href="#"><i class="fab fa-tiktok"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
+  <section id="regulamin" tabindex="0">
+    <h2>📜 Regulamin</h2>
+    <p>Nasze zasady opierają się na szacunku, bezpieczeństwie i współpracy. W społeczności Avi dbamy o kulturę, zakazujemy nienawiści i promujemy pozytywne zachowania. Prosimy o przestrzeganie zasad, aby każdy czuł się tu dobrze.</p>
+  </section>
+
+  <section id="kontakt" tabindex="0">
+    <h2>📬 Kontakt</h2>
+    <form id="contactForm" aria-label="Formularz kontaktowy">
+      <label for="name">Imię i nazwisko</label>
+      <input type="text" id="name" name="name" required autocomplete="name" placeholder="Twoje imię" />
+      <label for="email">Adres email</label>
+      <input type="email" id="email" name="email" required autocomplete="email" placeholder="twoj@email.pl" />
+      <label for="message">Wiadomość</label>
+      <textarea id="message" name="message" rows="5" required placeholder="Napisz do nas..." ></textarea>
+      <button type="submit">Wyślij</button>
+      <p id="formStatus" role="alert" aria-live="polite" style="margin-top:0.7rem;"></p>
+    </form>
+  </section>
+
+  <section id="opinie" tabindex="0">
+    <h2>💬 Opinie</h2>
+    <div class="opinion">
+      <p>“Świetna społeczność, która naprawdę dba o swoich członków i pomaga rozwijać umiejętności!”</p>
+      <div class="author">— Jan Kowalski</div>
     </div>
-  </footer>
+    <div class="opinion">
+      <p>“Dzięki Avi znalazłem nowych przyjaciół i stałem się lepszym graczem na Minecraft!”</p>
+      <div class="author">— Anna Nowak</div>
+    </div>
+  </section>
 
-  <button id="scrollTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑</button>
+  <section id="zespol" tabindex="0">
+    <h2>🫂 Zespół</h2>
+    <div class="team-grid">
+      <div class="member">
+        <img src="https://i.imgur.com/eQNcEtO.png" alt="Avi - Właściciel" />
+        <h3>Avi</h3>
+        <p>👑 Właściciel</p>
+      </div>
+      <div class="member">
+        <img src="https://i.imgur.com/G1NGtjL.png" alt="Boszkii - Admin" />
+        <h3>Boszkii</h3>
+        <p>🛡️ Admin</p>
+      </div>
+      <div class="member">
+        <img src="https://i.imgur.com/WTzuNnX.png" alt="Moderator" />
+        <h3>Moderator</h3>
+        <p>🔨 Moderator</p>
+      </div>
+      <div class="member">
+        <img src="https://i.imgur.com/J0AIhR6.png" alt="Support" />
+        <h3>Support</h3>
+        <p>🎧 Wsparcie</p>
+      </div>
+      <div class="member">
+        <img src="https://i.imgur.com/6Rp3CCY.png" alt="Pomocnik" />
+        <h3>Pomocnik</h3>
+        <p>🪄 Pomocnik</p>
+      </div>
+      <div class="member">
+        <img src="https://i.imgur.com/wDUeUVG.png" alt="Tester" />
+        <h3>Tester</h3>
+        <p>🧪 Tester</p>
+      </div>
+    </div>
+  </section>
 
-  <script>
-    // Scroll to top button
-    window.onscroll = () => {
-      document.getElementById('scrollTop').style.display = window.scrollY > 200 ? 'block' : 'none';
-    };
+  <section id="faq" tabindex="0" aria-label="Często zadawane pytania">
+    <h2>❓ FAQ</h2>
+    <div class="faq-item" tabindex="0" role="button" aria-expanded="false" aria-controls="faq1" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter'){toggleFaq(this);}">
+      <h3 class="faq-question">Jak dołączyć do społeczności Avi? <span aria-hidden="true">+</span></h3>
+      <div class="faq-answer" id="faq1">
+        <p>Aby dołączyć, kliknij link zaproszenia do naszego serwera Discord lub Minecraft, dostępny w sekcji Aktualności.</p>
+      </div>
+    </div>
+    <div class="faq-item" tabindex="0" role="button" aria-expanded="false" aria-controls="faq2" onclick="toggleFaq(this)" onkeydown="if(event.key==='Enter'){toggleFaq(this);}">
+      <h3 class="faq-question">Czy społeczność Avi jest darmowa? <span aria-hidden="true">+</span></h3>
+      <div class="faq-answer" id="faq2">
+        <p>Tak, dołączenie do społeczności jest całkowicie darmowe i dostępne dla każdego.</p>
+      </div>
+    </div>
+  </section>
 
-    // Dark mode toggle
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark-mode');
-    }
+  <section id="aktualnosci" tabindex="0">
+    <h2>📰 Aktualności</h2>
+    <article>
+      <h3>Startujemy z nowym serwerem Minecraft!</h3>
+      <p>Zapraszamy wszystkich fanów Minecrafta do wspólnej zabawy i budowania. Dołącz do nas już dziś!</p>
+    </article>
+    <article>
+      <h3>Wprowadzamy system rang na Discordzie</h3>
+      <p>Nowe role i nagrody dla najbardziej aktywnych członków naszej społeczności.</p>
+    </article>
+  </section>
 
-    // Language switcher (dummy)
-    function switchLang() {
-      alert('Przełącznik języka działa – pełna obsługa możliwa po wdrożeniu backendu.');
-    }
+  <section id="partnerzy" tabindex="0">
+    <h2>🤝 Partnerzy</h2>
+    <p>Współpracujemy z najlepszymi serwerami i społecznościami gamingowymi, by zapewnić Ci jeszcze więcej atrakcji i możliwości.</p>
+  </section>
 
-    // Reveal animations
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        entry.target.classList.toggle("visible", entry.isIntersecting);
-      });
-    });
-    document.querySelectorAll(".section").forEach(sec => {
-      sec.classList.add("hidden");
-      observer.observe(sec);
-    });
+  <section id="cytaty" tabindex="0">
+    <h2>💡 Cytaty</h2>
+    <blockquote>"Najlepszą drogą do sukcesu jest współpraca i wzajemne wsparcie."</blockquote>
+    <blockquote>"Graj, ucz się, dziel – to motto naszej społeczności."</blockquote>
+  </section>
 
-    // Webhook integration
-    document.getElementById("contactForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const name = this.name.value;
-      const email = this.email.value;
-      const message = this.message.value;
+</main>
 
-      fetch("https://discord.com/api/webhooks/1385661490794598461/TkirOjnpJu7aQ7mHpJW7C5OlX4HvNCa5VuF1cXNLIGXdEixAIVbFnU-373mqReloHEWx", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ content: `📬 Nowa wiadomość:\n👤 Imię: ${name}\n📧 Email: ${email}\n💬 Wiadomość: ${message}` })
-      }).then(() => {
-        alert("Wiadomość wysłana!");
-        this.reset();
-      }).catch(() => alert("Błąd podczas wysyłania."));
-    });
-  </script>
+<footer>
+  <p>&copy; 2025 Avi Społeczność. Wszelkie prawa zastrzeżone.</p>
+</footer>
+
+<script>
+  // Dark mode toggle
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+  }
+
+  // Dummy language switch alert
+  function switchLang() {
+    alert('Funkcja zmiany języka jeszcze nieaktywna.');
+  }
+
+  // FAQ toggle
+  function toggleFaq(element) {
+    const isOpen = element.classList.toggle('open');
+    element.setAttribute('aria-expanded', isOpen);
+    const plusMinus = element.querySelector('.faq-question span');
+    if(plusMinus) plusMinus.textContent = isOpen ? '−' : '+';
+  }
+
+  // Form submission simulation
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const status = document.getElementById('formStatus');
+    status.textContent = 'Wysyłanie...';
+    setTimeout(() => {
+      status.textContent = 'Dziękujemy za wiadomość! Skontaktujemy się wkrótce.';
+      this.reset();
+    }, 1500);
+  });
+</script>
+
 </body>
 </html>

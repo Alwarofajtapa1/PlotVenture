@@ -2,177 +2,264 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PlotVenture - Społeczność Graczy</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PlotVenture - CORE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
   <style>
     :root {
       --bg: #0e001a;
       --text: #fff;
-      --accent: #9f5fff;
-      --panel: #1c0033;
+      --accent: #a55eff;
+      --card-bg: #1c0033;
+      --border: 2px solid var(--accent);
     }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text);
     }
-    header, section, footer {
-      padding: 2rem;
-    }
+
     nav {
-      background: var(--panel);
+      background: var(--card-bg);
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
+      border-bottom: var(--border);
     }
-    nav a {
-      color: var(--text);
-      margin: 0 1rem;
-      text-decoration: none;
-    }
-    .team-member {
-      background: var(--panel);
-      border: 2px solid var(--accent);
-      border-radius: 10px;
-      text-align: center;
-      padding: 1rem;
-      margin: 1rem;
-    }
-    .team-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    footer {
-      text-align: center;
-      background: #120020;
-    }
-    .socials a {
-      margin: 0 0.5rem;
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
       color: var(--accent);
     }
-    form input, form textarea {
+
+    nav .links a {
+      color: var(--text);
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav .links a:hover {
+      color: var(--accent);
+    }
+
+    header {
+      text-align: center;
+      padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    header img {
+      width: 150px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px var(--accent);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 1rem 0 0.5rem;
+      text-shadow: 0 0 10px var(--accent);
+    }
+
+    section {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    .section-card {
+      background: var(--card-bg);
+      border: var(--border);
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 15px var(--accent);
+    }
+
+    .section-card h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 6px var(--accent);
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+
+    .member {
+      text-align: center;
+      padding: 1rem;
+      background: #260042;
+      border-radius: 10px;
+      border: 1px solid var(--accent);
+    }
+
+    .member img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .member h3 {
+      margin: 0.5rem 0 0;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
       width: 100%;
       padding: 1rem;
       margin-bottom: 1rem;
-      background: #1c0033;
       border: 1px solid var(--accent);
-      color: #fff;
+      border-radius: 10px;
+      background: #2d004c;
+      color: var(--text);
     }
-    form button {
-      padding: 1rem;
+
+    .contact-form button {
       background: var(--accent);
       color: white;
       border: none;
-      cursor: pointer;
+      padding: 1rem;
+      width: 100%;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    .opinie-box {
+      margin-top: 1rem;
+      font-style: italic;
+      background: #210038;
+      padding: 1rem;
+      border-left: 4px solid var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      background: #140027;
+      padding: 1.5rem 1rem;
+      border-top: var(--border);
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .social-media a {
+      color: var(--accent);
+      margin: 0 0.5rem;
+      font-size: 1.4rem;
+    }
+
+    @media (max-width: 600px) {
+      header img {
+        width: 100px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      nav .links {
+        display: none;
+      }
     }
   </style>
 </head>
+
 <body>
   <nav>
-    <div><strong>PlotVenture</strong></div>
-    <div>
-      <a href="#about">O nas</a>
-      <a href="#news">Aktualności</a>
-      <a href="#team">Zespół</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Kontakt</a>
-      <a href="#opinions">Opinie</a>
-      <a href="#login">Zaloguj</a>
+    <div class="logo">PlotVenture</div>
+    <div class="links">
+      <a href="#aktualnosci">Aktualności</a>
+      <a href="#onas">O nas</a>
+      <a href="#zespol">Zespół</a>
+      <a href="#kontakt">Kontakt</a>
     </div>
   </nav>
 
   <header>
-    <h1>PlotVenture</h1>
-    <p>Społeczność dla graczy Discord i Minecraft</p>
+    <img src="https://i.imgur.com/QgCSy4d.png" alt="PlotVenture Logo" />
+    <h1>PlotVenture - CORE</h1>
   </header>
 
-  <section id="about">
-    <h2>O nas</h2>
-    <p>PlotVenture powstało z myślą o graczach Minecraft oraz użytkownikach Discorda. Tworzymy społeczność przyjazną każdemu!</p>
-  </section>
-
-  <section id="news">
+  <section id="aktualnosci" class="section-card">
     <h2>Aktualności</h2>
-    <p>Nowości pojawiają się co 1-2 tygodnie! Sprawdzaj regularnie!</p>
+    <p>Nowy sezon eventów już wkrótce! Śledź nas na Discordzie i social media.</p>
   </section>
 
-  <section id="team">
+  <section id="onas" class="section-card">
+    <h2>O nas</h2>
+    <p>PlotVenture powstało z myślą o graczach Discorda i Minecrafta. Tworzymy unikalne doświadczenia w rozgrywce społecznościowej.</p>
+  </section>
+
+  <section id="zespol" class="section-card">
     <h2>Zespół</h2>
     <div class="team-grid">
-      <div class="team-member"><img src="https://imgur.com/edierNc.png" width="64"><h3>Właściciel</h3></div>
-      <div class="team-member"><img src="https://imgur.com/Y7AGGmr.png" width="64"><h3>Admin</h3></div>
-      <div class="team-member"><img src="https://imgur.com/QNwu0Xa.png" width="64"><h3>Moderator</h3></div>
-      <div class="team-member"><img src="https://imgur.com/wym8KIa.png" width="64"><h3>Support</h3></div>
-      <div class="team-member"><img src="https://imgur.com/fXfFXHu.png" width="64"><h3>Pomocnik</h3></div>
-      <div class="team-member"><img src="https://imgur.com/4Ot1eBz.png" width="64"><h3>Tester</h3></div>
+      <div class="member">
+        <img src="https://imgur.com/edierNc.png" alt="Właściciel">
+        <h3>Avi0782<br><small>👑 Właściciel</small></h3>
+      </div>
+      <div class="member">
+        <img src="https://imgur.com/Y7AGGmr.png" alt="Admin">
+        <h3>Nick<br><small>🛡️ Admin</small></h3>
+      </div>
+      <div class="member">
+        <img src="https://imgur.com/QNwu0Xa.png" alt="Moderator">
+        <h3>Nick<br><small>🔨 Moderator</small></h3>
+      </div>
+      <div class="member">
+        <img src="https://imgur.com/wym8KIa.png" alt="Support">
+        <h3>Nick<br><small>💬 Support</small></h3>
+      </div>
+      <div class="member">
+        <img src="https://imgur.com/fXfFXHu.png" alt="Pomocnik">
+        <h3>Nick<br><small>🧰 Pomocnik</small></h3>
+      </div>
+      <div class="member">
+        <img src="https://imgur.com/4Ot1eBz.png" alt="Tester">
+        <h3>Nick<br><small>🧪 Tester</small></h3>
+      </div>
     </div>
   </section>
 
-  <section id="faq">
-    <h2>FAQ</h2>
-    <p><strong>Jak dołączyć?</strong> Kliknij „Zaloguj” i utwórz konto lub użyj Discorda.</p>
-    <p><strong>Czy strona jest darmowa?</strong> Tak, korzystanie z PlotVenture jest darmowe.</p>
-  </section>
-
-  <section id="opinions">
-    <h2>Opinie</h2>
-    <form onsubmit="sendOpinion(event)">
-      <input type="text" name="nick" placeholder="Twój nick" required />
-      <textarea name="opinia" placeholder="Twoja opinia" required></textarea>
-      <button type="submit">Wyślij opinię</button>
+  <section id="kontakt" class="section-card">
+    <h2>Kontakt z Administracją</h2>
+    <form class="contact-form">
+      <input type="text" name="nick" placeholder="Twój nick / imię" required>
+      <input type="email" name="email" placeholder="Adres e-mail">
+      <textarea name="wiadomosc" rows="5" placeholder="Wiadomość do administracji..." required></textarea>
+      <button type="submit">Wyślij wiadomość</button>
     </form>
   </section>
 
-  <section id="contact">
-    <h2>Centrum Wsparcia</h2>
-    <form>
-      <input type="text" placeholder="Imię lub Nick" required>
-      <input type="email" placeholder="E-mail">
-      <textarea placeholder="Wiadomość..." required></textarea>
-      <button>Wyślij</button>
-    </form>
-  </section>
-
-  <section id="login">
-    <h2>Zaloguj się / Zarejestruj</h2>
-    <form>
-      <input type="text" placeholder="Nazwa użytkownika" required>
-      <input type="password" placeholder="Hasło" required>
-      <button>Zaloguj</button>
-    </form>
+  <section class="section-card">
+    <h2>Opinie użytkowników</h2>
+    <div class="opinie-box">
+      “Świetna społeczność, dobra zabawa i profesjonalne podejście!” – użytkownik123
+    </div>
   </section>
 
   <footer>
-    <p>© 2025 PlotVenture</p>
-    <p><a href="polityka-prywatnosci.html">Polityka prywatności</a></p>
-    <div class="socials">
+    <p><a href="polityka-prywatnosci.html">Polityka prywatności</a> | © 2025 PlotVenture</p>
+    <div class="social-media">
       <a href="#"><i class="fab fa-facebook"></i></a>
       <a href="#"><i class="fab fa-twitter"></i></a>
       <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-tiktok"></i></a>
       <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="https://discord.gg/7prNChKHnY"><i class="fab fa-discord"></i></a>
+      <a href="#"><i class="fab fa-discord"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
     </div>
   </footer>
-
-  <script>
-    function sendOpinion(e) {
-      e.preventDefault();
-      const nick = e.target.nick.value;
-      const opinia = e.target.opinia.value;
-
-      fetch("https://discord.com/api/webhooks/TWOJ_WEBHOOK", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ content: `📝 Opinia od **${nick}**: ${opinia}` })
-      });
-      alert("Dziękujemy za opinię!");
-      e.target.reset();
-    }
-  </script>
 </body>
 </html>

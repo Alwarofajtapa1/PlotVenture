@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Blog | Społeczność</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    body { font-family: 'Inter', sans-serif; margin: 0; background: #fff; color: #121212; transition: .3s; }
+    body.dark-mode { background: #0f0f1a; color: #f0f0f0; }
+    header { background: #7f5af0; color: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    nav a { margin-left: 1rem; color: white; text-decoration: none; font-weight: bold; }
+    main { padding: 3rem 2rem; max-width: 1000px; margin: auto; }
+    article { margin-bottom: 2rem; border-bottom: 1px solid #ccc; padding-bottom: 1rem; }
+    .toggle { cursor: pointer; margin-left: 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Blog</h1>
+    <nav>
+      <a href="index.html">Strona główna</a>
+      <span class="toggle" onclick="toggleDarkMode()">🌓</span>
+      <span class="toggle" onclick="switchLang()">🌐</span>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <h2>Tytuł wpisu 1</h2>
+      <p>Treść wpisu blogowego 1...</p>
+    </article>
+    <article>
+      <h2>Tytuł wpisu 2</h2>
+      <p>Treść wpisu blogowego 2...</p>
+    </article>
+  </main>
+  <script>
+    function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
+    function switchLang() { alert(\"Zmiana języka jeszcze nieaktywna.\"); }
+  </script>
+</body>
+</html>

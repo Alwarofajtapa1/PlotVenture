@@ -271,23 +271,51 @@
 </script>
 
 
-  <section class="section-card">
-    <h2>Opinie użytkowników</h2>
+<section class="section-card">
+  <h2>Opinie użytkowników</h2>
+  <div id="opinie-lista">
     <div class="opinie-box">
       “Świetna społeczność, dobra zabawa i profesjonalne podejście!” – użytkownik123
     </div>
-  </section>
+  </div>
 
-  <footer>
-    <p><a href="polityka-prywatnosci.html">Polityka prywatności</a> | © 2025 PlotVenture</p>
-    <div class="social-media">
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-discord"></i></a>
-      <a href="#"><i class="fab fa-tiktok"></i></a>
-    </div>
-  </footer>
-</body>
-</html>
+  <div style="margin-top: 1rem;">
+    <h3>Dodaj swoją opinię</h3>
+    <textarea id="nowa-opinia" rows="3" placeholder="Napisz tutaj swoją opinię..." style="width: 100%; border-radius: 10px; padding: 0.5rem;"></textarea>
+    <button id="dodaj-opinie" style="margin-top: 0.5rem; background: var(--accent); color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 10px; cursor: pointer;">Dodaj opinię</button>
+  </div>
+</section>
+
+<script>
+  const dodajBtn = document.getElementById('dodaj-opinie');
+  const opinieLista = document.getElementById('opinie-lista');
+  const nowaOpiniaInput = document.getElementById('nowa-opinia');
+
+  dodajBtn.addEventListener('click', () => {
+    const tekst = nowaOpiniaInput.value.trim();
+    if (tekst.length < 5) {
+      alert('Opinia musi mieć co najmniej 5 znaków.');
+      return;
+    }
+
+    // Tworzymy nowy element opinii
+    const opiniaDiv = document.createElement('div');
+    opiniaDiv.className = 'opinie-box';
+    opiniaDiv.textContent = tekst;
+
+    // Dodajemy nową opinię na górę listy
+    opinieLista.insertBefore(opiniaDiv, opinieLista.firstChild);
+
+    // Czyścimy pole
+    nowaOpiniaInput.value = '';
+  });
+</script>
+Gdzie to wstawić?
+Podmień cały obecny blok opinii w twoim kodzie tym powyższym (czyli ten fragment, który zaczyna się od <section class="section-card"> z opiniami).
+
+Efekt:
+Pokazuje domyślną opinię
+
+Możesz wpisać nową, kliknąć "Dodaj opinię"
+
+Nowa opinia pojawi się na górze listy od razu

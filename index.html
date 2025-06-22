@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PlotVenture - Społeczność Graczy</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg: #0e001a;
+      --text: #fff;
+      --accent: #9f5fff;
+      --panel: #1c0033;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header, section, footer {
+      padding: 2rem;
+    }
+    nav {
+      background: var(--panel);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    nav a {
+      color: var(--text);
+      margin: 0 1rem;
+      text-decoration: none;
+    }
+    .team-member {
+      background: var(--panel);
+      border: 2px solid var(--accent);
+      border-radius: 10px;
+      text-align: center;
+      padding: 1rem;
+      margin: 1rem;
+    }
+    .team-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    footer {
+      text-align: center;
+      background: #120020;
+    }
+    .socials a {
+      margin: 0 0.5rem;
+      color: var(--accent);
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background: #1c0033;
+      border: 1px solid var(--accent);
+      color: #fff;
+    }
+    form button {
+      padding: 1rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div><strong>PlotVenture</strong></div>
+    <div>
+      <a href="#about">O nas</a>
+      <a href="#news">Aktualności</a>
+      <a href="#team">Zespół</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Kontakt</a>
+      <a href="#opinions">Opinie</a>
+      <a href="#login">Zaloguj</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>PlotVenture</h1>
+    <p>Społeczność dla graczy Discord i Minecraft</p>
+  </header>
+
+  <section id="about">
+    <h2>O nas</h2>
+    <p>PlotVenture powstało z myślą o graczach Minecraft oraz użytkownikach Discorda. Tworzymy społeczność przyjazną każdemu!</p>
+  </section>
+
+  <section id="news">
+    <h2>Aktualności</h2>
+    <p>Nowości pojawiają się co 1-2 tygodnie! Sprawdzaj regularnie!</p>
+  </section>
+
+  <section id="team">
+    <h2>Zespół</h2>
+    <div class="team-grid">
+      <div class="team-member"><img src="https://imgur.com/edierNc.png" width="64"><h3>Właściciel</h3></div>
+      <div class="team-member"><img src="https://imgur.com/Y7AGGmr.png" width="64"><h3>Admin</h3></div>
+      <div class="team-member"><img src="https://imgur.com/QNwu0Xa.png" width="64"><h3>Moderator</h3></div>
+      <div class="team-member"><img src="https://imgur.com/wym8KIa.png" width="64"><h3>Support</h3></div>
+      <div class="team-member"><img src="https://imgur.com/fXfFXHu.png" width="64"><h3>Pomocnik</h3></div>
+      <div class="team-member"><img src="https://imgur.com/4Ot1eBz.png" width="64"><h3>Tester</h3></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>FAQ</h2>
+    <p><strong>Jak dołączyć?</strong> Kliknij „Zaloguj” i utwórz konto lub użyj Discorda.</p>
+    <p><strong>Czy strona jest darmowa?</strong> Tak, korzystanie z PlotVenture jest darmowe.</p>
+  </section>
+
+  <section id="opinions">
+    <h2>Opinie</h2>
+    <form onsubmit="sendOpinion(event)">
+      <input type="text" name="nick" placeholder="Twój nick" required />
+      <textarea name="opinia" placeholder="Twoja opinia" required></textarea>
+      <button type="submit">Wyślij opinię</button>
+    </form>
+  </section>
+
+  <section id="contact">
+    <h2>Centrum Wsparcia</h2>
+    <form>
+      <input type="text" placeholder="Imię lub Nick" required>
+      <input type="email" placeholder="E-mail">
+      <textarea placeholder="Wiadomość..." required></textarea>
+      <button>Wyślij</button>
+    </form>
+  </section>
+
+  <section id="login">
+    <h2>Zaloguj się / Zarejestruj</h2>
+    <form>
+      <input type="text" placeholder="Nazwa użytkownika" required>
+      <input type="password" placeholder="Hasło" required>
+      <button>Zaloguj</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 PlotVenture</p>
+    <p><a href="polityka-prywatnosci.html">Polityka prywatności</a></p>
+    <div class="socials">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="https://discord.gg/7prNChKHnY"><i class="fab fa-discord"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function sendOpinion(e) {
+      e.preventDefault();
+      const nick = e.target.nick.value;
+      const opinia = e.target.opinia.value;
+
+      fetch("https://discord.com/api/webhooks/TWOJ_WEBHOOK", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: `📝 Opinia od **${nick}**: ${opinia}` })
+      });
+      alert("Dziękujemy za opinię!");
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>

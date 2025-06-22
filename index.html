@@ -3,352 +3,227 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PlotVenture - CORE</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-
+  <title>Społeczność</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg: #0e001a;
-      --text: #fff;
-      --accent: #a55eff;
-      --card-bg: #1c0033;
-      --border: 2px solid var(--accent);
+      --main-color: #7f5af0;
+      --light-bg: #ffffff;
+      --dark-bg: #0f0f1a;
+      --text-light: #f0f0f0;
+      --text-dark: #121212;
     }
 
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      background-color: var(--light-bg);
+      color: var(--text-dark);
+      transition: background-color 0.3s, color 0.3s;
     }
 
-    nav {
-      background: var(--card-bg);
+    body.dark-mode {
+      background-color: var(--dark-bg);
+      color: var(--text-light);
+    }
+
+    header {
+      background-color: var(--main-color);
+      color: white;
       padding: 1rem 2rem;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      border-bottom: var(--border);
+      justify-content: space-between;
     }
 
-    nav .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--accent);
+    header img {
+      height: 50px;
     }
 
-    nav .links a {
-      color: var(--text);
-      margin-left: 1.5rem;
+    nav a {
+      margin: 0 1rem;
+      color: white;
       text-decoration: none;
       font-weight: 500;
     }
 
-    nav .links a:hover {
-      color: var(--accent);
-    }
-
-    header {
-      text-align: center;
-      padding: 2rem;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    header img {
-      width: 150px;
-      border-radius: 12px;
-      box-shadow: 0 0 20px var(--accent);
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin: 1rem 0 0.5rem;
-      text-shadow: 0 0 10px var(--accent);
-    }
-
-    section {
+    .section {
+      padding: 4rem 2rem;
       max-width: 1000px;
       margin: auto;
-      padding: 2rem;
     }
 
-    .section-card {
-      background: var(--card-bg);
-      border: var(--border);
-      border-radius: 15px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 0 15px var(--accent);
-    }
-
-    .section-card h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-      text-shadow: 0 0 6px var(--accent);
-    }
-
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1rem;
-    }
-
-    .member {
-      text-align: center;
-      padding: 1rem;
-      background: #260042;
-      border-radius: 10px;
-      border: 1px solid var(--accent);
-    }
-
-    .member img {
-      width: 60px;
-      height: 60px;
-      object-fit: contain;
-    }
-
-    .member h3 {
-      margin: 0.5rem 0 0;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border: 1px solid var(--accent);
-      border-radius: 10px;
-      background: #2d004c;
-      color: var(--text);
-    }
-
-    .contact-form button {
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 1rem;
-      width: 100%;
-      border-radius: 10px;
-      font-size: 1rem;
-    }
-
-    .opinie-box {
-      margin-top: 1rem;
-      font-style: italic;
-      background: #210038;
-      padding: 1rem;
-      border-left: 4px solid var(--accent);
+    h2 {
+      color: var(--main-color);
     }
 
     footer {
+      background-color: #1a1a2e;
+      color: white;
+      padding: 3rem 2rem;
       text-align: center;
-      background: #140027;
-      padding: 1.5rem 1rem;
-      border-top: var(--border);
-      font-size: 0.9rem;
-      color: var(--text);
     }
 
-    footer a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
+    .socials a {
+      margin: 0 10px;
+      color: var(--main-color);
+      font-size: 1.5rem;
     }
 
-    .social-media a {
-      color: var(--accent);
-      margin: 0 0.5rem;
-      font-size: 1.4rem;
+    .form-group {
+      margin-bottom: 1rem;
     }
 
-    @media (max-width: 600px) {
-      header img {
-        width: 100px;
-      }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
 
-      h1 {
-        font-size: 2rem;
-      }
+    .btn {
+      background-color: var(--main-color);
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
 
-      nav .links {
-        display: none;
-      }
+    #scrollTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: var(--main-color);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      font-size: 18px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .lang-switch, .dark-switch {
+      cursor: pointer;
+      margin-left: 1rem;
+    }
+
+    .section.hidden {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
-
 <body>
-  <nav>
-    <div class="logo">PlotVenture</div>
-    <div class="links">
-      <a href="#aktualnosci">Aktualności</a>
-      <a href="#onas">O nas</a>
-      <a href="#zespol">Zespół</a>
-      <a href="#kontakt">Kontakt</a>
-    </div>
-  </nav>
-
   <header>
-    <img src="https://i.imgur.com/87jrcQl.png" alt="PlotVenture Logo" />
-    <h1>PlotVenture - CORE</h1>
+    <img src="https://imgur.com/0ET8WlH.png" alt="Logo">
+    <nav>
+      <a href="#onas">O nas</a>
+      <a href="#projekty">Projekty</a>
+      <a href="#umiejetnosci">Umiejętności</a>
+      <a href="#doswiadczenie">Doświadczenie</a>
+      <a href="#blog">Blog</a>
+      <a href="#opinie">Opinie</a>
+      <a href="#faq">FAQ</a>
+      <a href="#kontakt">Kontakt</a>
+      <span class="lang-switch" onclick="switchLang()">🌐</span>
+      <span class="dark-switch" onclick="toggleDarkMode()">🌓</span>
+    </nav>
   </header>
 
-  <section id="aktualnosci" class="section-card">
-    <h2>Aktualności</h2>
-    <p>Nowy sezon eventów już wkrótce! Śledź nas na Discordzie i social media.</p>
-  </section>
+  <main>
+    <section class="section" id="onas"><h2>O nas</h2><p>Nasza społeczność łączy ludzi z pasją.</p></section>
+    <section class="section" id="projekty"><h2>Projekty</h2><p>Wkrótce więcej...</p></section>
+    <section class="section" id="umiejetnosci"><h2>Umiejętności</h2><p>Frontend, backend, community management...</p></section>
+    <section class="section" id="doswiadczenie"><h2>Doświadczenie</h2><p>Lata wspólnych projektów za nami.</p></section>
+    <section class="section" id="blog"><h2>Blog</h2><p>Aktualności i wiedza od nas.</p></section>
+    <section class="section" id="opinie"><h2>Opinie</h2><p>„Super miejsce do nauki i wymiany doświadczeń!”</p></section>
+    <section class="section" id="faq"><h2>FAQ</h2><p>Najczęstsze pytania - wkrótce.</p></section>
 
-  <section id="onas" class="section-card">
-    <h2>O nas</h2>
-    <p>PlotVenture powstało z myślą o graczach Discorda i Minecrafta. Tworzymy unikalne doświadczenia w rozgrywce społecznościowej.</p>
-  </section>
+    <section class="section" id="kontakt">
+      <h2>Kontakt</h2>
+      <form id="contactForm">
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Twoje imię" required>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Twój email" required>
+        </div>
+        <div class="form-group">
+          <textarea name="message" placeholder="Wiadomość" required></textarea>
+        </div>
+        <button type="submit" class="btn">Wyślij</button>
+      </form>
+    </section>
+  </main>
 
-  <section id="zespol" class="section-card">
-    <h2>Zespół</h2>
-    <div class="team-grid">
-      <div class="member">
-        <img src="https://imgur.com/edierNc.png" alt="Właściciel">
-        <h3>Avi0782<br><small>👑 Właściciel</small></h3>
-      </div>
-      <div class="member">
-        <img src="https://imgur.com/Y7AGGmr.png" alt="Admin">
-        <h3>Boszkii<br><small>🛡️ Admin</small></h3>
-      </div>
-      <div class="member">
-        <img src="https://imgur.com/QNwu0Xa.png" alt="Moderator">
-        <h3>Nick<br><small>🔨 Moderator</small></h3>
-      </div>
-      <div class="member">
-        <img src="https://imgur.com/wym8KIa.png" alt="Support">
-        <h3>Nick<br><small>💬 Support</small></h3>
-      </div>
-      <div class="member">
-        <img src="https://imgur.com/fXfFXHu.png" alt="Pomocnik">
-        <h3>Nick<br><small>🧰 Pomocnik</small></h3>
-      </div>
-      <div class="member">
-        <img src="https://imgur.com/4Ot1eBz.png" alt="Tester">
-        <h3>Nick<br><small>🧪 Tester</small></h3>
-      </div>
+  <footer>
+    <p>© 2025 Społeczność. Wszelkie prawa zastrzeżone.</p>
+    <div class="socials">
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
     </div>
-  </section>
+  </footer>
 
- <section id="kontakt" class="section-card">
-  <h2>Kontakt z Administracją</h2>
-  <form class="contact-form" id="contactForm">
-    <input type="text" name="nick" placeholder="Twój nick / imię" required>
-    <input type="email" name="email" placeholder="Adres e-mail">
-    <textarea name="wiadomosc" rows="5" placeholder="Wiadomość do administracji..." required></textarea>
-    <button type="submit">Wyślij wiadomość</button>
-  </form>
-  <p id="statusMessage" style="color: lightgreen; text-align: center; margin-top: 10px;"></p>
-</section>
+  <button id="scrollTop" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });">↑</button>
 
-<script>
-  const form = document.getElementById('contactForm');
-  const statusMessage = document.getElementById('statusMessage');
+  <script>
+    // Scroll to top button
+    window.onscroll = () => {
+      document.getElementById('scrollTop').style.display = window.scrollY > 200 ? 'block' : 'none';
+    };
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const nick = form.nick.value.trim();
-    const email = form.email.value.trim();
-    const wiadomosc = form.wiadomosc.value.trim();
-
-    if (!nick || !wiadomosc) {
-      statusMessage.style.color = 'red';
-      statusMessage.textContent = 'Proszę uzupełnić wymagane pola.';
-      return;
+    // Dark mode toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
     }
 
-    const webhookURL = 'https://discord.com/api/webhooks/1385661490794598461/TkirOjnpJu7aQ7mHpJW7C5OlX4HvNCa5VuF1cXNLIGXdEixAIVbFnU-373mqReloHEWx';
+    // Language switcher (dummy)
+    function switchLang() {
+      alert('Przełącznik języka działa – pełna obsługa możliwa po wdrożeniu backendu.');
+    }
 
-    const content = `**Nowa wiadomość z formularza kontaktowego PlotVenture:**\n` +
-                    `**Nick:** ${nick}\n` +
-                    (email ? `**Email:** ${email}\n` : '') +
-                    `**Wiadomość:**\n${wiadomosc}`;
-
-    try {
-      const response = await fetch(webhookURL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ content })
+    // Reveal animations
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        entry.target.classList.toggle("visible", entry.isIntersecting);
       });
+    });
+    document.querySelectorAll(".section").forEach(sec => {
+      sec.classList.add("hidden");
+      observer.observe(sec);
+    });
 
-      if (response.ok) {
-        statusMessage.style.color = 'lightgreen';
-        statusMessage.textContent = 'Wiadomość została wysłana. Dziękujemy!';
-        form.reset();
-      } else {
-        throw new Error('Błąd wysyłania wiadomości');
-      }
-    } catch (error) {
-      statusMessage.style.color = 'red';
-      statusMessage.textContent = 'Coś poszło nie tak. Spróbuj ponownie później.';
-      console.error(error);
-    }
-  });
-</script>
+    // Webhook integration
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = this.name.value;
+      const email = this.email.value;
+      const message = this.message.value;
 
-
-
-<section class="section-card">
-  <h2>Opinie użytkowników</h2>
-  <div id="opinie-lista">
-    <div class="opinie-box">
-      “Świetna społeczność, dobra zabawa i profesjonalne podejście!” – <strong>użytkownik123</strong> <br/>
-      <small style="color: var(--accent);">2025-06-22 12:00</small>
-    </div>
-  </div>
-
-  <div style="margin-top: 1rem;">
-    <h3>Dodaj swoją opinię</h3>
-    <input id="nowy-nick" type="text" placeholder="Twój nick" style="width: 100%; border-radius: 10px; padding: 0.5rem; margin-bottom: 0.5rem;">
-    <textarea id="nowa-opinia" rows="3" placeholder="Napisz tutaj swoją opinię..." style="width: 100%; border-radius: 10px; padding: 0.5rem;"></textarea>
-    <button id="dodaj-opinie" style="margin-top: 0.5rem; background: var(--accent); color: white; border: none; padding: 0.7rem 1.5rem; border-radius: 10px; cursor: pointer;">Dodaj opinię</button>
-  </div>
-</section>
-
-<script>
-  const dodajBtn = document.getElementById('dodaj-opinie');
-  const opinieLista = document.getElementById('opinie-lista');
-  const nowaOpiniaInput = document.getElementById('nowa-opinia');
-  const nowyNickInput = document.getElementById('nowy-nick');
-
-  dodajBtn.addEventListener('click', () => {
-    const tekst = nowaOpiniaInput.value.trim();
-    const nick = nowyNickInput.value.trim();
-
-    if (nick.length < 3) {
-      alert('Podaj swój nick (min. 3 znaki).');
-      return;
-    }
-
-    if (tekst.length < 5) {
-      alert('Opinia musi mieć co najmniej 5 znaków.');
-      return;
-    }
-
-    // Pobierz aktualną datę i godzinę w formacie YYYY-MM-DD HH:MM
-    const now = new Date();
-    const dataStr = now.getFullYear() + '-' +
-                    String(now.getMonth() + 1).padStart(2, '0') + '-' +
-                    String(now.getDate()).padStart(2, '0') + ' ' +
-                    String(now.getHours()).padStart(2, '0') + ':' +
-                    String(now.getMinutes()).padStart(2, '0');
-
-    // Tworzymy nowy element opinii
-    const opiniaDiv = document.createElement('div');
-    opiniaDiv.className = 'opinie-box';
-    opiniaDiv.innerHTML = `“${tekst}” – <strong>${nick}</strong> <br/><small style="color: var(--accent);">${dataStr}</small>`;
-
-    // Dodajemy nową opinię na górę listy
-    opinieLista.insertBefore(opiniaDiv, opinieLista.firstChild);
-
-    // Czyścimy pola
-    nowaOpiniaInput.value = '';
-    nowyNickInput.value = '';
-  });
-</script>
+      fetch("https://discord.com/api/webhooks/1385661490794598461/TkirOjnpJu7aQ7mHpJW7C5OlX4HvNCa5VuF1cXNLIGXdEixAIVbFnU-373mqReloHEWx", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ content: `📬 Nowa wiadomość:\n👤 Imię: ${name}\n📧 Email: ${email}\n💬 Wiadomość: ${message}` })
+      }).then(() => {
+        alert("Wiadomość wysłana!");
+        this.reset();
+      }).catch(() => alert("Błąd podczas wysyłania."));
+    });
+  </script>
+</body>
+</html>

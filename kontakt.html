@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Kontakt | Społeczność</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    body { font-family: 'Inter', sans-serif; margin: 0; background: #fff; color: #121212; transition: .3s; }
+    body.dark-mode { background: #0f0f1a; color: #f0f0f0; }
+    header { background: #7f5af0; color: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    nav a { margin-left: 1rem; color: white; text-decoration: none; font-weight: bold; }
+    main { padding: 3rem 2rem; max-width: 700px; margin: auto; }
+    .form-group { margin-bottom: 1rem; }
+    input, textarea { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; }
+    .btn { background: #7f5af0; color: white; padding: 0.6rem 1.4rem; border: none; border-radius: 6px; cursor: pointer; }
+    .toggle { cursor: pointer; margin-left: 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Kontakt</h1>
+    <nav>
+      <a href="index.html">Strona główna</a>
+      <span class="toggle" onclick="toggleDarkMode()">🌃</span>
+      <span class="toggle" onclick="switchLang()">🌐</span>
+    </nav>
+  </header>
+  <main>
+    <form id="contactForm">
+      <div class="form-group">
+        <input type="text" name="name" placeholder="Imię" required>
+      </div>
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Email" required>
+      </div>
+      <div class="form-group">
+        <textarea name="message" placeholder="Wiadomość" required></textarea>
+      </div>
+      <button type="submit" class="btn">Wyślij</button>
+    </form>
+  </main>
+  <script>
+    function toggleDarkMode() { document.body.classList.toggle('dark-mode'); }
+    function switchLang() { alert("Zmiana języka jeszcze nieaktywna."); }
+
+    document.getElementById("contactForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = this.name.value;
+      const email = this.email.value;
+      const message = this.message.value;
+
+      fetch("https://discord.com/api/webhooks/1385661490794598461/TkirOjnpJu7aQ7mHpJW7C5OlX4HvNCa5VuF1cXNLIGXdEixAIVbFnU-373mqReloHEWx", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ content: `Nowa wiadomość:\nImię: ${name}\nEmail: ${email}\nWiadomość: ${message}` })
+      }).then(() => {
+        alert("Wiadomość wysłana!");
+        this.reset();
+      }).catch(() => alert("Błąd podczas wysyłania."));
+    });
+  </script>
+</body>
+</html>
